@@ -115,7 +115,7 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
 });
 
 // @desc     Delete bootcamp
-// @route    PUT /api/v1/bootcamps/:id
+// @route    DELETE /api/v1/bootcamps/:id
 // @access   Private
 exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
     const bootcamp = await Bootcamp.findById(req.params.id);
@@ -135,7 +135,7 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
 
 // @desc     GET bootcamp in radius
 // @route    GET /api/v1/bootcamps/radius/:zipcode/:distance
-// @access   Private
+// @access   Public
 exports.getBootcampsInRadius = asyncHandler(async (req, res, next) => {
     const { zipcode, distance } = req.params;
 

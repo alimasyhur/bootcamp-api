@@ -31,8 +31,6 @@ module.exports.getCourse = asyncHandler(async (req, res, next) => {
         select: 'name description'
     });
 
-    console.log(req.params.id);
-
     if(!course) {
         return next(new ErrorResponse(`No course with the id of ${req.params.id}`, 404));
     }

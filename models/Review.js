@@ -10,7 +10,6 @@ const ReviewSchema = new mongoose.Schema({
     text: {
         type: String,
         required: [true, 'Please add a description for review'],
-        maxlength: [100, 'Text can not be more than 100 characters']
     },
     rating: {
         type: Number,

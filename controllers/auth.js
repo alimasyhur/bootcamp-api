@@ -22,7 +22,7 @@ module.exports.register = asyncHandler( async(req, res, next) => {
 
 // @desc     User login authentication to the application
 // @route    POST /api/v1/auth/login
-// @access   Public
+// @access   Private
 module.exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -39,6 +39,23 @@ module.exports.login = asyncHandler(async (req, res, next) => {
     }
 
     sendTokenResponse(user, 200, res);
+})
+
+// @desc     Log User Out from the application
+// @route    GET /api/v1/auth/logout
+// @access   Public
+module.exports.logout = asyncHandler(async (req, res, next) => {
+    res.cookie('token', 'none', {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly: true
+    });
+
+    res
+        .status(200)
+        .json({
+            success: true,
+            data: {}
+        })
 })
 
 // @desc     User getM authenticed user to the application

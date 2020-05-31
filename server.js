@@ -6,6 +6,7 @@ const colors = require('colors');
 const fileupload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const mongoSanitizer = require('express-mongo-sanitize');
+const helmet = require('helmet');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
 
@@ -33,6 +34,9 @@ app.use(fileupload());
 
 // Sanitize Request
 app.use(mongoSanitizer());
+
+// Secure with helmet
+app.use(helmet());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
